@@ -15,8 +15,6 @@ retreat, from arrival to reunion, at their dog's eye level.
 | `brand/` | Style bible, continuity bible, and the generated shot list |
 | `prompts/` | One generation brief per scene — image prompt, video prompt, negative prompt, camera, motion, transition, audio |
 | `assets/video/canyon_collar_film.mp4` | The film the site plays |
-| `assets/proxy/` | Vector art-direction plates, one per scene |
-| `assets/guides/` | The same plates with reserved typography space marked |
 | `assets/manifest.json` | The single file the website reads |
 | `site/` | The scroll experience, wired to the manifest |
 | `tools/` | The generator — one source of truth for all of the above |
@@ -45,9 +43,8 @@ Specs: 1280×720, 10.06s, 24fps, H.264 + AAC.
 photoreal image or video model, each carrying the locked continuity block so
 the property, the dog, the wardrobe and the props do not drift between scenes.
 
-`assets/proxy/` and `assets/guides/` are vector art-direction plates: framing,
-palette and the typography space each shot has to keep clear. They are
-references for shooting, not site assets.
+`brand/SHOT_LIST.md` lists every scene with its lens, format, duration, camera
+move and the typography space it has to keep clear.
 
 ## The journey
 
@@ -99,15 +96,8 @@ you ever want scroll-scrubbed playback instead of looping.
 ## Regenerating
 
 ```bash
-python3 tools/build.py                         # prompts, plates, shot list, manifest
-NODE_PATH=$(npm root -g) node tools/render.js  # optional: animated proxy previews
-NODE_PATH=$(npm root -g) node tools/render.js --stills --only 13
+python3 tools/build.py    # prompts, shot list, manifest
 ```
-
-`render.js` is optional now that real footage is in. It exists to animate the
-vector plates into rough previews of a scene's camera move — useful when
-briefing a shot, not something the site loads. Output lands in `assets/still/`
-and `assets/video/`, and neither is committed.
 
 `tools/asset_spec.py` is the single source of truth — scene text, palette,
 lighting states, continuity block, negative prompt, scroll ranges and camera

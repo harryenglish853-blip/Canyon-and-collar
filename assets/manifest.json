@@ -16,7 +16,7 @@
     "soft_black": "#1A1816",
     "sunset_amber": "#E0A04A"
   },
-  "note": "The site plays one continuous film behind the whole journey. Chapters supply the scroll ranges and overlay typography; `vector` and `guides` are art-direction references, not site assets.",
+  "note": "The site plays the supplied film. Chapters supply the scroll ranges and the overlay typography over it.",
   "film": {
     "src": "assets/video/canyon_collar_film.mp4",
     "width": 1280,
@@ -45,25 +45,7 @@
         "LUXURY STAYS. GROUNDED IN NATURE."
       ],
       "negativeSpace": "upper left third and sky band",
-      "move": {
-        "dur": 7.0,
-        "z": [
-          1.0,
-          1.09
-        ],
-        "x": [
-          0.0,
-          0.0
-        ],
-        "y": [
-          0.0,
-          0.0
-        ],
-        "ease": "inout",
-        "note": "slow dolly-in"
-      },
-      "vector": "assets/proxy/01_canyon_collar_arrival_image.svg",
-      "guides": "assets/guides/01_canyon_collar_arrival_image_guides.svg",
+      "move": "slow dolly-in",
       "deliverables": [
         "01_canyon_collar_arrival_image",
         "01_canyon_collar_arrival_video"
@@ -86,25 +68,7 @@
         "A BETTER KIND OF STAY."
       ],
       "negativeSpace": "upper right",
-      "move": {
-        "dur": 6.0,
-        "z": [
-          1.1,
-          1.1
-        ],
-        "x": [
-          -3.0,
-          3.0
-        ],
-        "y": [
-          0.0,
-          0.0
-        ],
-        "ease": "inout",
-        "note": "lateral track"
-      },
-      "vector": "assets/proxy/02_concierge_welcome_poster.svg",
-      "guides": "assets/guides/02_concierge_welcome_poster_guides.svg",
+      "move": "lateral track",
       "deliverables": [
         "02_concierge_welcome"
       ]
@@ -124,25 +88,7 @@
       "light": "macro",
       "overlay": [],
       "negativeSpace": "left third",
-      "move": {
-        "dur": 5.0,
-        "z": [
-          1.02,
-          1.3
-        ],
-        "x": [
-          2.0,
-          -4.0
-        ],
-        "y": [
-          0.0,
-          2.0
-        ],
-        "ease": "in",
-        "note": "macro push to buckle"
-      },
-      "vector": "assets/proxy/03_leash_handoff_poster.svg",
-      "guides": "assets/guides/03_leash_handoff_poster_guides.svg",
+      "move": "macro push to buckle",
       "deliverables": [
         "03_leash_handoff"
       ]
@@ -165,25 +111,7 @@
         "ROOM TO REST."
       ],
       "negativeSpace": "left wall plane",
-      "move": {
-        "dur": 7.0,
-        "z": [
-          1.02,
-          1.14
-        ],
-        "x": [
-          2.0,
-          -2.0
-        ],
-        "y": [
-          0.0,
-          0.0
-        ],
-        "ease": "inout",
-        "note": "dolly through doorway"
-      },
-      "vector": "assets/proxy/04_private_suite_image.svg",
-      "guides": "assets/guides/04_private_suite_image_guides.svg",
+      "move": "dolly through doorway",
       "deliverables": [
         "04_private_suite_image",
         "04_private_suite_video"
@@ -204,25 +132,7 @@
       "light": "interior_day",
       "overlay": [],
       "negativeSpace": "upper right",
-      "move": {
-        "dur": 5.0,
-        "z": [
-          1.12,
-          1.12
-        ],
-        "x": [
-          3.0,
-          -3.0
-        ],
-        "y": [
-          0.0,
-          0.0
-        ],
-        "ease": "inout",
-        "note": "slider"
-      },
-      "vector": "assets/proxy/05_personal_belongings_poster.svg",
-      "guides": "assets/guides/05_personal_belongings_poster_guides.svg",
+      "move": "slider",
       "deliverables": [
         "05_personal_belongings"
       ]
@@ -244,25 +154,7 @@
         "GROUNDED IN NATURE."
       ],
       "negativeSpace": "upper band / sky",
-      "move": {
-        "dur": 8.0,
-        "z": [
-          1.08,
-          1.08
-        ],
-        "x": [
-          -5.0,
-          5.0
-        ],
-        "y": [
-          0.0,
-          0.0
-        ],
-        "ease": "linear",
-        "note": "walking track"
-      },
-      "vector": "assets/proxy/06_nature_walk_image.svg",
-      "guides": "assets/guides/06_nature_walk_image_guides.svg",
+      "move": "walking track",
       "deliverables": [
         "06_nature_walk_image",
         "06_nature_walk_video"
@@ -283,25 +175,7 @@
       "light": "afternoon",
       "overlay": [],
       "negativeSpace": "right third",
-      "move": {
-        "dur": 6.0,
-        "z": [
-          1.06,
-          1.1
-        ],
-        "x": [
-          5.0,
-          -4.0
-        ],
-        "y": [
-          0.0,
-          -1.0
-        ],
-        "ease": "inout",
-        "note": "track with run-past"
-      },
-      "vector": "assets/proxy/07_outdoor_exploration_poster.svg",
-      "guides": "assets/guides/07_outdoor_exploration_poster_guides.svg",
+      "move": "track with run-past",
       "deliverables": [
         "07_outdoor_exploration"
       ]
@@ -321,25 +195,7 @@
       "light": "afternoon",
       "overlay": [],
       "negativeSpace": "upper left",
-      "move": {
-        "dur": 5.0,
-        "z": [
-          1.05,
-          1.28
-        ],
-        "x": [
-          -2.0,
-          2.0
-        ],
-        "y": [
-          1.0,
-          -1.0
-        ],
-        "ease": "inout",
-        "note": "macro push on water"
-      },
-      "vector": "assets/proxy/08_fresh_water_poster.svg",
-      "guides": "assets/guides/08_fresh_water_poster_guides.svg",
+      "move": "macro push on water",
       "deliverables": [
         "08_fresh_water"
       ]
@@ -362,25 +218,7 @@
         "OUR PRIORITY."
       ],
       "negativeSpace": "left third",
-      "move": {
-        "dur": 6.0,
-        "z": [
-          1.03,
-          1.12
-        ],
-        "x": [
-          -2.0,
-          1.0
-        ],
-        "y": [
-          0.0,
-          0.0
-        ],
-        "ease": "inout",
-        "note": "follow the bowl"
-      },
-      "vector": "assets/proxy/09_personalized_meal_poster.svg",
-      "guides": "assets/guides/09_personalized_meal_poster_guides.svg",
+      "move": "follow the bowl",
       "deliverables": [
         "09_personalized_meal"
       ]
@@ -402,25 +240,7 @@
         "CARE THAT FEELS PERSONAL."
       ],
       "negativeSpace": "upper right",
-      "move": {
-        "dur": 6.0,
-        "z": [
-          1.04,
-          1.12
-        ],
-        "x": [
-          1.0,
-          -1.0
-        ],
-        "y": [
-          0.0,
-          0.0
-        ],
-        "ease": "inout",
-        "note": "drifting push-in"
-      },
-      "vector": "assets/proxy/10_concierge_care_poster.svg",
-      "guides": "assets/guides/10_concierge_care_poster_guides.svg",
+      "move": "drifting push-in",
       "deliverables": [
         "10_concierge_care"
       ]
@@ -443,25 +263,7 @@
         "EVEN WHEN YOU'RE AWAY."
       ],
       "negativeSpace": "right third \u2014 reserve for UI overlay",
-      "move": {
-        "dur": 5.0,
-        "z": [
-          1.03,
-          1.16
-        ],
-        "x": [
-          3.0,
-          -2.0
-        ],
-        "y": [
-          0.0,
-          0.0
-        ],
-        "ease": "inout",
-        "note": "push to phone, rack"
-      },
-      "vector": "assets/proxy/11_owner_update_poster.svg",
-      "guides": "assets/guides/11_owner_update_poster_guides.svg",
+      "move": "push to phone, rack",
       "deliverables": [
         "11_owner_update"
       ]
@@ -483,25 +285,7 @@
         "REST IS PART OF THE EXPERIENCE."
       ],
       "negativeSpace": "upper left",
-      "move": {
-        "dur": 7.0,
-        "z": [
-          1.02,
-          1.07
-        ],
-        "x": [
-          0.0,
-          0.0
-        ],
-        "y": [
-          0.0,
-          0.0
-        ],
-        "ease": "inout",
-        "note": "barely-there dolly"
-      },
-      "vector": "assets/proxy/12_afternoon_rest_poster.svg",
-      "guides": "assets/guides/12_afternoon_rest_poster_guides.svg",
+      "move": "barely-there dolly",
       "deliverables": [
         "12_afternoon_rest"
       ]
@@ -524,25 +308,7 @@
         "GROUNDED IN NATURE."
       ],
       "negativeSpace": "upper left sky",
-      "move": {
-        "dur": 7.0,
-        "z": [
-          1.06,
-          1.12
-        ],
-        "x": [
-          -4.0,
-          4.0
-        ],
-        "y": [
-          1.0,
-          -1.0
-        ],
-        "ease": "inout",
-        "note": "slow orbit"
-      },
-      "vector": "assets/proxy/13_golden_hour_image.svg",
-      "guides": "assets/guides/13_golden_hour_image_guides.svg",
+      "move": "slow orbit",
       "deliverables": [
         "13_golden_hour_image",
         "13_golden_hour_video"
@@ -563,25 +329,7 @@
       "light": "dusk",
       "overlay": [],
       "negativeSpace": "upper band / deep blue sky",
-      "move": {
-        "dur": 6.0,
-        "z": [
-          1.0,
-          1.1
-        ],
-        "x": [
-          0.0,
-          0.0
-        ],
-        "y": [
-          0.0,
-          1.0
-        ],
-        "ease": "inout",
-        "note": "track from behind"
-      },
-      "vector": "assets/proxy/14_evening_retreat_poster.svg",
-      "guides": "assets/guides/14_evening_retreat_poster_guides.svg",
+      "move": "track from behind",
       "deliverables": [
         "14_evening_retreat"
       ]
@@ -601,25 +349,7 @@
       "light": "interior_lamp",
       "overlay": [],
       "negativeSpace": "left third",
-      "move": {
-        "dur": 6.0,
-        "z": [
-          1.02,
-          1.14
-        ],
-        "x": [
-          -2.0,
-          1.0
-        ],
-        "y": [
-          0.0,
-          0.0
-        ],
-        "ease": "inout",
-        "note": "push-in to bed"
-      },
-      "vector": "assets/proxy/15_bedtime_poster.svg",
-      "guides": "assets/guides/15_bedtime_poster_guides.svg",
+      "move": "push-in to bed",
       "deliverables": [
         "15_bedtime"
       ]
@@ -639,25 +369,7 @@
       "light": "morning",
       "overlay": [],
       "negativeSpace": "upper right",
-      "move": {
-        "dur": 6.0,
-        "z": [
-          1.1,
-          1.02
-        ],
-        "x": [
-          0.0,
-          0.0
-        ],
-        "y": [
-          3.0,
-          -2.0
-        ],
-        "ease": "inout",
-        "note": "rise from floor light"
-      },
-      "vector": "assets/proxy/16_morning_poster.svg",
-      "guides": "assets/guides/16_morning_poster_guides.svg",
+      "move": "rise from floor light",
       "deliverables": [
         "16_morning"
       ]
@@ -679,26 +391,7 @@
         "WELCOME HOME."
       ],
       "negativeSpace": "upper left",
-      "move": {
-        "dur": 6.0,
-        "z": [
-          1.12,
-          1.04
-        ],
-        "x": [
-          3.0,
-          -1.0
-        ],
-        "y": [
-          0.0,
-          1.0
-        ],
-        "ease": "out",
-        "note": "follow and settle",
-        "handheld": true
-      },
-      "vector": "assets/proxy/17_reunion_poster.svg",
-      "guides": "assets/guides/17_reunion_poster_guides.svg",
+      "move": "follow and settle",
       "deliverables": [
         "17_reunion"
       ]
@@ -722,25 +415,7 @@
         "GROUNDED IN NATURE."
       ],
       "negativeSpace": "entire left half and lower third \u2014 reserve for wordmark and three CTAs",
-      "move": {
-        "dur": 7.0,
-        "z": [
-          1.0,
-          1.08
-        ],
-        "x": [
-          0.0,
-          0.0
-        ],
-        "y": [
-          0.0,
-          0.0
-        ],
-        "ease": "inout",
-        "note": "final slow dolly-in"
-      },
-      "vector": "assets/proxy/18_final_hero_image.svg",
-      "guides": "assets/guides/18_final_hero_image_guides.svg",
+      "move": "final slow dolly-in",
       "deliverables": [
         "18_final_hero_image",
         "18_final_hero_video"
@@ -761,25 +436,7 @@
         "LUXURY STAYS. GROUNDED IN NATURE."
       ],
       "negativeSpace": "right two-thirds",
-      "move": {
-        "dur": 5.0,
-        "z": [
-          1.04,
-          1.26
-        ],
-        "x": [
-          -3.0,
-          3.0
-        ],
-        "y": [
-          1.0,
-          -2.0
-        ],
-        "ease": "inout",
-        "note": "macro drift to tag"
-      },
-      "vector": "assets/proxy/19_signature_collar_macro_image.svg",
-      "guides": "assets/guides/19_signature_collar_macro_image_guides.svg",
+      "move": "macro drift to tag",
       "deliverables": [
         "19_signature_collar_macro_image",
         "19_signature_collar_macro_video"
