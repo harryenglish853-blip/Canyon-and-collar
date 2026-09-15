@@ -22,6 +22,7 @@
   let scenes = [];
   let active = -1;
   let ticking = false;
+  let introDone = false;   // the opening title animates in on load, once only
 
   fetch('../assets/manifest.json')
     .then(r => r.json())
@@ -43,7 +44,7 @@
       let plate;
       if (c.video && !reduced) {
         plate = document.createElement('video');
-        plate.src = c.video;
+        plate.src = '../' + c.video;
         plate.muted = true;
         plate.loop = true;
         plate.playsInline = true;
@@ -56,7 +57,6 @@
         plate.alt = c.title;
         plate.loading = i < 2 ? 'eager' : 'lazy';
       }
-      if (plate.tagName === 'VIDEO') plate.src = '../' + c.video;
       plate.className = 'plate';
       scene.appendChild(plate);
 
@@ -124,6 +124,7 @@
   const scrollable = () => JOURNEY.offsetHeight - innerHeight;
 
   function onScroll() {
+    if (scrollY > 0) introDone = true;
     CUE.style.opacity = scrollY > 40 ? '0' : '.6';
     if (!ticking) { ticking = true; requestAnimationFrame(() => { render(); ticking = false; }); }
   }
@@ -164,8 +165,10 @@
         s.lines.forEach((line, li) => {
           const out = smooth(clamp((t - (first ? 0.82 : 0.80)) / 0.18));
           if (first) {
-            // the CSS intro owns the entrance; only the exit is scroll-driven
-            if (t > 0.04) {
+            // The CSS intro owns the entrance. Once it has run, scroll drives
+            // the exit — and the return, so scrolling back to the top brings
+            // the title back rather than leaving a stale zero behind.
+            if (introDone) {
               line.style.opacity = (1 - out).toFixed(3);
               line.style.transform = 'none';
             }
