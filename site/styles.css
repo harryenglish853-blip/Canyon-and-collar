@@ -1,0 +1,349 @@
+/* Canyon & Collar — scroll experience
+   Type, colour and spacing all come from the brand's locked palette. */
+
+:root {
+  --sandstone: #D8C3A5;
+  --warm-beige: #E4D5C3;
+  --desert-clay: #B4704F;
+  --sage: #8A9A7B;
+  --charcoal: #33312E;
+  --deep-olive: #4A4F3C;
+  --leather: #6B4A32;
+  --cream: #F3EBDF;
+  --rust: #9C5B3C;
+  --soft-black: #1A1816;
+  --amber: #E0A04A;
+
+  --serif: "Cormorant Garamond", Optima, Palatino, Georgia, serif;
+  --sans: "Jost", "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+  --gutter: clamp(20px, 5vw, 96px);
+  --ease: cubic-bezier(.22, .61, .36, 1);
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: auto; }
+
+body {
+  margin: 0;
+  background: var(--soft-black);
+  color: var(--cream);
+  font-family: var(--sans);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* ---------- the sticky stage ------------------------------------------- */
+
+#journey { position: relative; }
+
+#stage {
+  position: sticky;
+  top: 0;
+  height: 100svh;
+  overflow: hidden;
+  background: var(--soft-black);
+}
+
+.scene {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  will-change: opacity;
+}
+
+.scene .plate {
+  position: absolute;
+  inset: -2%;
+  width: 104%;
+  height: 104%;
+  object-fit: cover;
+  will-change: transform;
+}
+
+/* a warm grade sits over every plate so the whole film reads as one day */
+.scene::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(135% 95% at 50% 45%, transparent 50%, rgba(26,24,22,.28) 100%),
+    linear-gradient(to top, rgba(26,24,22,.46) 0%, transparent 36%);
+  pointer-events: none;
+}
+
+/* ---------- overlay typography ----------------------------------------- */
+
+.copy {
+  position: absolute;
+  z-index: 3;
+  left: var(--gutter);
+  bottom: clamp(88px, 16vh, 190px);
+  max-width: min(760px, 62vw);
+  text-shadow: 0 2px 40px rgba(26, 24, 22, .55);
+}
+
+.copy.top { top: clamp(84px, 16vh, 170px); bottom: auto; }
+
+.copy.right {
+  left: auto;
+  right: clamp(72px, 9vw, 190px);
+  text-align: right;
+}
+
+.copy .eyebrow {
+  font-size: clamp(9px, .78vw, 12px);
+  letter-spacing: .58em;
+  text-transform: uppercase;
+  color: var(--sandstone);
+  opacity: .8;
+  margin: 0 0 clamp(14px, 2vh, 26px);
+}
+
+.copy .line {
+  display: block;
+  font-family: var(--serif);
+  font-weight: 300;
+  font-size: clamp(30px, 4.4vw, 74px);
+  line-height: 1.06;
+  letter-spacing: .02em;
+  margin: 0;
+  opacity: 0;
+  transform: translateY(26px);
+}
+
+.copy .line + .line { margin-top: .12em; }
+
+/* The opening title is on screen before anyone scrolls — it arrives on load,
+   and the scroll handler only takes over once the journey actually starts. */
+.copy.intro .line {
+  animation: rise 1.1s var(--ease) forwards;
+  animation-delay: calc(.35s + var(--i, 0) * .22s);
+}
+
+@keyframes rise { to { opacity: 1; transform: none; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .copy.intro .line { animation-duration: .01s; }
+}
+
+.copy.wordmark .eyebrow { display: none; }
+
+.copy.wordmark .line:first-of-type {
+  font-family: var(--sans);
+  font-weight: 300;
+  font-size: clamp(26px, 3.4vw, 58px);
+  letter-spacing: .34em;
+  text-transform: uppercase;
+}
+
+.copy.wordmark .line:not(:first-of-type) {
+  margin-top: clamp(16px, 2.2vh, 30px);
+  font-family: var(--sans);
+  font-size: clamp(11px, 1.05vw, 16px);
+  letter-spacing: .38em;
+  text-transform: uppercase;
+  opacity: 0;
+  color: var(--sandstone);
+}
+
+/* ---------- chapter rail ------------------------------------------------ */
+
+#rail {
+  position: fixed;
+  z-index: 6;
+  right: clamp(14px, 2.2vw, 40px);
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: clamp(7px, 1.1vh, 13px);
+  align-items: flex-end;
+}
+
+#rail button {
+  all: unset;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--cream);
+}
+
+#rail .tick {
+  display: block;
+  width: 22px;
+  height: 1px;
+  background: currentColor;
+  opacity: .28;
+  transition: width .5s var(--ease), opacity .5s var(--ease);
+}
+
+#rail .name {
+  font-size: 9px;
+  letter-spacing: .34em;
+  text-transform: uppercase;
+  opacity: 0;
+  transform: translateX(8px);
+  transition: opacity .4s var(--ease), transform .4s var(--ease);
+  white-space: nowrap;
+}
+
+#rail button:hover .name,
+#rail button[aria-current="true"] .name { opacity: .72; transform: none; }
+#rail button[aria-current="true"] .tick { width: 46px; opacity: 1; }
+
+/* ---------- scroll cue + progress -------------------------------------- */
+
+#cue {
+  position: fixed;
+  z-index: 6;
+  left: 50%;
+  bottom: clamp(22px, 4vh, 44px);
+  transform: translateX(-50%);
+  font-size: 9px;
+  letter-spacing: .44em;
+  text-transform: uppercase;
+  color: var(--cream);
+  opacity: .0;
+  transition: opacity .8s var(--ease);
+  pointer-events: none;
+}
+
+#cue::after {
+  content: "";
+  display: block;
+  width: 1px;
+  height: 42px;
+  margin: 14px auto 0;
+  background: linear-gradient(to bottom, var(--cream), transparent);
+  animation: drift 2.6s var(--ease) infinite;
+}
+
+@keyframes drift {
+  0% { transform: scaleY(.2); transform-origin: top; opacity: 0; }
+  40% { opacity: .9; }
+  100% { transform: scaleY(1); transform-origin: top; opacity: 0; }
+}
+
+#progress {
+  position: fixed;
+  z-index: 6;
+  left: 0; top: 0;
+  height: 2px;
+  width: 0;
+  background: linear-gradient(to right, transparent, var(--amber));
+  opacity: .75;
+}
+
+/* ---------- closing sections ------------------------------------------- */
+
+.brandmark {
+  position: relative;
+  height: 78svh;
+  overflow: hidden;
+  background: var(--soft-black);
+  display: grid;
+  place-items: center;
+}
+
+.brandmark video, .brandmark img {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  opacity: .82;
+}
+
+.brandmark .plaque {
+  position: relative;
+  text-align: center;
+  padding: 0 var(--gutter);
+}
+
+.brandmark .plaque span {
+  display: block;
+  font-family: var(--sans);
+  text-transform: uppercase;
+}
+
+.brandmark .plaque .name { font-size: clamp(20px, 2.6vw, 40px); letter-spacing: .42em; }
+.brandmark .plaque .sub {
+  margin-top: 18px;
+  font-size: clamp(9px, .85vw, 13px);
+  letter-spacing: .4em;
+  color: var(--sandstone);
+}
+
+footer {
+  position: relative;
+  padding: clamp(70px, 12vh, 150px) var(--gutter) clamp(50px, 8vh, 90px);
+  background: var(--soft-black);
+  border-top: 1px solid rgba(216, 195, 165, .14);
+}
+
+footer .lede {
+  font-family: var(--serif);
+  font-weight: 300;
+  font-size: clamp(26px, 3.4vw, 54px);
+  line-height: 1.15;
+  margin: 0 0 clamp(34px, 5vh, 60px);
+  max-width: 18ch;
+}
+
+.ctas { display: flex; flex-wrap: wrap; gap: 14px; }
+
+.ctas a {
+  text-decoration: none;
+  color: var(--cream);
+  border: 1px solid rgba(216, 195, 165, .38);
+  padding: 18px 34px;
+  font-size: 10px;
+  letter-spacing: .34em;
+  text-transform: uppercase;
+  transition: background .4s var(--ease), border-color .4s var(--ease), color .4s var(--ease);
+}
+
+.ctas a:hover { background: var(--cream); border-color: var(--cream); color: var(--soft-black); }
+.ctas a.primary { background: rgba(224, 160, 74, .16); border-color: rgba(224, 160, 74, .5); }
+
+.colophon {
+  margin-top: clamp(50px, 8vh, 90px);
+  padding-top: 26px;
+  border-top: 1px solid rgba(216, 195, 165, .14);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px 40px;
+  justify-content: space-between;
+  font-size: 10px;
+  letter-spacing: .24em;
+  text-transform: uppercase;
+  color: rgba(243, 235, 223, .45);
+}
+
+/* ---------- proxy notice ------------------------------------------------ */
+
+#proxy-note {
+  position: fixed;
+  z-index: 7;
+  left: var(--gutter);
+  top: clamp(18px, 3vh, 34px);
+  font-size: 9px;
+  letter-spacing: .3em;
+  text-transform: uppercase;
+  color: rgba(243, 235, 223, .5);
+  border: 1px solid rgba(243, 235, 223, .2);
+  padding: 8px 14px;
+  background: rgba(26, 24, 22, .4);
+  backdrop-filter: blur(6px);
+}
+
+@media (max-width: 720px) {
+  .copy { max-width: calc(100vw - var(--gutter) * 2); bottom: clamp(70px, 13vh, 120px); }
+  #rail .name { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scene .plate { transform: none !important; }
+  #cue::after { animation: none; }
+}

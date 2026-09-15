@@ -1,0 +1,812 @@
+{
+  "brand": {
+    "name": "CANYON & COLLAR",
+    "tagline": "LUXURY STAYS. GROUNDED IN NATURE."
+  },
+  "palette": {
+    "sandstone": "#D8C3A5",
+    "warm_beige": "#E4D5C3",
+    "desert_clay": "#B4704F",
+    "sage": "#8A9A7B",
+    "charcoal": "#33312E",
+    "deep_olive": "#4A4F3C",
+    "leather_brown": "#6B4A32",
+    "cream": "#F3EBDF",
+    "muted_rust": "#9C5B3C",
+    "soft_black": "#1A1816",
+    "sunset_amber": "#E0A04A"
+  },
+  "note": "Proxy plates are placeholders. Replace poster/video paths with the final renders; nothing else in the site needs to change.",
+  "chapters": [
+    {
+      "id": "01",
+      "slug": "canyon_collar_arrival",
+      "title": "OPENING HERO / ARRIVAL",
+      "chapter": "ARRIVAL",
+      "scroll": [
+        0.0,
+        0.08
+      ],
+      "duration": "5-8s",
+      "lens": "35mm",
+      "ratio": "2.39:1",
+      "light": "golden",
+      "overlay": [
+        "CANYON & COLLAR",
+        "LUXURY STAYS. GROUNDED IN NATURE."
+      ],
+      "negativeSpace": "upper left third and sky band",
+      "move": {
+        "dur": 7.0,
+        "z": [
+          1.0,
+          1.09
+        ],
+        "x": [
+          0.0,
+          0.0
+        ],
+        "y": [
+          0.0,
+          0.0
+        ],
+        "ease": "inout",
+        "note": "slow dolly-in"
+      },
+      "vector": "assets/proxy/01_canyon_collar_arrival_image.svg",
+      "guides": "assets/guides/01_canyon_collar_arrival_image_guides.svg",
+      "poster": "assets/still/01_canyon_collar_arrival_image.jpg",
+      "posterIsProxy": true,
+      "video": "assets/video/01_canyon_collar_arrival_video.webm",
+      "videoIsProxy": true,
+      "finalVideo": "assets/video/01_canyon_collar_arrival_video.mp4"
+    },
+    {
+      "id": "02",
+      "slug": "concierge_welcome",
+      "title": "THE WELCOME",
+      "chapter": "WELCOME",
+      "scroll": [
+        0.08,
+        0.15
+      ],
+      "duration": "5-7s",
+      "lens": "50mm",
+      "ratio": "2.39:1",
+      "light": "afternoon",
+      "overlay": [
+        "A BETTER KIND OF STAY."
+      ],
+      "negativeSpace": "upper right",
+      "move": {
+        "dur": 6.0,
+        "z": [
+          1.1,
+          1.1
+        ],
+        "x": [
+          -3.0,
+          3.0
+        ],
+        "y": [
+          0.0,
+          0.0
+        ],
+        "ease": "inout",
+        "note": "lateral track"
+      },
+      "vector": "assets/proxy/02_concierge_welcome_poster.svg",
+      "guides": "assets/guides/02_concierge_welcome_poster_guides.svg",
+      "poster": "assets/still/02_concierge_welcome_poster.jpg",
+      "posterIsProxy": true,
+      "video": "assets/video/02_concierge_welcome.webm",
+      "videoIsProxy": true,
+      "finalVideo": "assets/video/02_concierge_welcome.mp4"
+    },
+    {
+      "id": "03",
+      "slug": "leash_handoff",
+      "title": "LEASH HANDOFF TRANSITION",
+      "chapter": "WELCOME",
+      "scroll": [
+        0.15,
+        0.22
+      ],
+      "duration": "4-6s",
+      "lens": "100mm macro",
+      "ratio": "2.39:1",
+      "light": "macro",
+      "overlay": [],
+      "negativeSpace": "left third",
+      "move": {
+        "dur": 5.0,
+        "z": [
+          1.02,
+          1.3
+        ],
+        "x": [
+          2.0,
+          -4.0
+        ],
+        "y": [
+          0.0,
+          2.0
+        ],
+        "ease": "in",
+        "note": "macro push to buckle"
+      },
+      "vector": "assets/proxy/03_leash_handoff_poster.svg",
+      "guides": "assets/guides/03_leash_handoff_poster_guides.svg",
+      "poster": "assets/still/03_leash_handoff_poster.jpg",
+      "posterIsProxy": true,
+      "video": "assets/video/03_leash_handoff.webm",
+      "videoIsProxy": true,
+      "finalVideo": "assets/video/03_leash_handoff.mp4"
+    },
+    {
+      "id": "04",
+      "slug": "private_suite",
+      "title": "THE SUITE",
+      "chapter": "THE SUITE",
+      "scroll": [
+        0.22,
+        0.32
+      ],
+      "duration": "6-8s",
+      "lens": "35mm",
+      "ratio": "2.39:1",
+      "light": "interior_day",
+      "overlay": [
+        "PRIVATE SUITES.",
+        "ROOM TO REST."
+      ],
+      "negativeSpace": "left wall plane",
+      "move": {
+        "dur": 7.0,
+        "z": [
+          1.02,
+          1.14
+        ],
+        "x": [
+          2.0,
+          -2.0
+        ],
+        "y": [
+          0.0,
+          0.0
+        ],
+        "ease": "inout",
+        "note": "dolly through doorway"
+      },
+      "vector": "assets/proxy/04_private_suite_image.svg",
+      "guides": "assets/guides/04_private_suite_image_guides.svg",
+      "poster": "assets/still/04_private_suite_image.jpg",
+      "posterIsProxy": true,
+      "video": "assets/video/04_private_suite_video.webm",
+      "videoIsProxy": true,
+      "finalVideo": "assets/video/04_private_suite_video.mp4"
+    },
+    {
+      "id": "05",
+      "slug": "personal_belongings",
+      "title": "PERSONAL BELONGINGS",
+      "chapter": "THE SUITE",
+      "scroll": [
+        0.32,
+        0.37
+      ],
+      "duration": "4-6s",
+      "lens": "85mm",
+      "ratio": "2.39:1",
+      "light": "interior_day",
+      "overlay": [],
+      "negativeSpace": "upper right",
+      "move": {
+        "dur": 5.0,
+        "z": [
+          1.12,
+          1.12
+        ],
+        "x": [
+          3.0,
+          -3.0
+        ],
+        "y": [
+          0.0,
+          0.0
+        ],
+        "ease": "inout",
+        "note": "slider"
+      },
+      "vector": "assets/proxy/05_personal_belongings_poster.svg",
+      "guides": "assets/guides/05_personal_belongings_poster_guides.svg",
+      "poster": "assets/still/05_personal_belongings_poster.jpg",
+      "posterIsProxy": true,
+      "video": "assets/video/05_personal_belongings.webm",
+      "videoIsProxy": true,
+      "finalVideo": "assets/video/05_personal_belongings.mp4"
+    },
+    {
+      "id": "06",
+      "slug": "nature_walk",
+      "title": "NATURE WALK",
+      "chapter": "NATURE",
+      "scroll": [
+        0.37,
+        0.47
+      ],
+      "duration": "6-10s",
+      "lens": "35mm",
+      "ratio": "2.39:1",
+      "light": "afternoon",
+      "overlay": [
+        "GROUNDED IN NATURE."
+      ],
+      "negativeSpace": "upper band / sky",
+      "move": {
+        "dur": 8.0,
+        "z": [
+          1.08,
+          1.08
+        ],
+        "x": [
+          -5.0,
+          5.0
+        ],
+        "y": [
+          0.0,
+          0.0
+        ],
+        "ease": "linear",
+        "note": "walking track"
+      },
+      "vector": "assets/proxy/06_nature_walk_image.svg",
+      "guides": "assets/guides/06_nature_walk_image_guides.svg",
+      "poster": "assets/still/06_nature_walk_image.jpg",
+      "posterIsProxy": true,
+      "video": "assets/video/06_nature_walk_video.webm",
+      "videoIsProxy": true,
+      "finalVideo": "assets/video/06_nature_walk_video.mp4"
+    },
+    {
+      "id": "07",
+      "slug": "outdoor_exploration",
+      "title": "OFF-LEASH EXPLORATION",
+      "chapter": "PLAY",
+      "scroll": [
+        0.47,
+        0.54
+      ],
+      "duration": "5-8s",
+      "lens": "50mm",
+      "ratio": "2.39:1",
+      "light": "afternoon",
+      "overlay": [],
+      "negativeSpace": "right third",
+      "move": {
+        "dur": 6.0,
+        "z": [
+          1.06,
+          1.1
+        ],
+        "x": [
+          5.0,
+          -4.0
+        ],
+        "y": [
+          0.0,
+          -1.0
+        ],
+        "ease": "inout",
+        "note": "track with run-past"
+      },
+      "vector": "assets/proxy/07_outdoor_exploration_poster.svg",
+      "guides": "assets/guides/07_outdoor_exploration_poster_guides.svg",
+      "poster": "assets/still/07_outdoor_exploration_poster.jpg",
+      "posterIsProxy": true,
+      "video": "assets/video/07_outdoor_exploration.webm",
+      "videoIsProxy": true,
+      "finalVideo": "assets/video/07_outdoor_exploration.mp4"
+    },
+    {
+      "id": "08",
+      "slug": "fresh_water",
+      "title": "WATER / REFRESH",
+      "chapter": "CARE",
+      "scroll": [
+        0.54,
+        0.58
+      ],
+      "duration": "4-6s",
+      "lens": "100mm macro",
+      "ratio": "2.39:1",
+      "light": "afternoon",
+      "overlay": [],
+      "negativeSpace": "upper left",
+      "move": {
+        "dur": 5.0,
+        "z": [
+          1.05,
+          1.28
+        ],
+        "x": [
+          -2.0,
+          2.0
+        ],
+        "y": [
+          1.0,
+          -1.0
+        ],
+        "ease": "inout",
+        "note": "macro push on water"
+      },
+      "vector": "assets/proxy/08_fresh_water_poster.svg",
+      "guides": "assets/guides/08_fresh_water_poster_guides.svg",
+      "poster": "assets/still/08_fresh_water_poster.jpg",
+      "posterIsProxy": true,
+      "video": "assets/video/08_fresh_water.webm",
+      "videoIsProxy": true,
+      "finalVideo": "assets/video/08_fresh_water.mp4"
+    },
+    {
+      "id": "09",
+      "slug": "personalized_meal",
+      "title": "PERSONALIZED MEAL",
+      "chapter": "CARE",
+      "scroll": [
+        0.58,
+        0.64
+      ],
+      "duration": "5-7s",
+      "lens": "50mm + macro",
+      "ratio": "2.39:1",
+      "light": "interior_day",
+      "overlay": [
+        "YOUR ROUTINE.",
+        "OUR PRIORITY."
+      ],
+      "negativeSpace": "left third",
+      "move": {
+        "dur": 6.0,
+        "z": [
+          1.03,
+          1.12
+        ],
+        "x": [
+          -2.0,
+          1.0
+        ],
+        "y": [
+          0.0,
+          0.0
+        ],
+        "ease": "inout",
+        "note": "follow the bowl"
+      },
+      "vector": "assets/proxy/09_personalized_meal_poster.svg",
+      "guides": "assets/guides/09_personalized_meal_poster_guides.svg",
+      "poster": "assets/still/09_personalized_meal_poster.jpg",
+      "posterIsProxy": true,
+      "video": "assets/video/09_personalized_meal.webm",
+      "videoIsProxy": true,
+      "finalVideo": "assets/video/09_personalized_meal.mp4"
+    },
+    {
+      "id": "10",
+      "slug": "concierge_care",
+      "title": "CONCIERGE CARE",
+      "chapter": "CARE",
+      "scroll": [
+        0.64,
+        0.7
+      ],
+      "duration": "5-7s",
+      "lens": "85mm",
+      "ratio": "2.39:1",
+      "light": "interior_day",
+      "overlay": [
+        "CARE THAT FEELS PERSONAL."
+      ],
+      "negativeSpace": "upper right",
+      "move": {
+        "dur": 6.0,
+        "z": [
+          1.04,
+          1.12
+        ],
+        "x": [
+          1.0,
+          -1.0
+        ],
+        "y": [
+          0.0,
+          0.0
+        ],
+        "ease": "inout",
+        "note": "drifting push-in"
+      },
+      "vector": "assets/proxy/10_concierge_care_poster.svg",
+      "guides": "assets/guides/10_concierge_care_poster_guides.svg",
+      "poster": "assets/still/10_concierge_care_poster.jpg",
+      "posterIsProxy": true,
+      "video": "assets/video/10_concierge_care.webm",
+      "videoIsProxy": true,
+      "finalVideo": "assets/video/10_concierge_care.mp4"
+    },
+    {
+      "id": "11",
+      "slug": "owner_update",
+      "title": "OWNER UPDATE",
+      "chapter": "PEACE OF MIND",
+      "scroll": [
+        0.7,
+        0.75
+      ],
+      "duration": "4-6s",
+      "lens": "50mm",
+      "ratio": "2.39:1",
+      "light": "interior_day",
+      "overlay": [
+        "PEACE OF MIND.",
+        "EVEN WHEN YOU'RE AWAY."
+      ],
+      "negativeSpace": "right third \u2014 reserve for UI overlay",
+      "move": {
+        "dur": 5.0,
+        "z": [
+          1.03,
+          1.16
+        ],
+        "x": [
+          3.0,
+          -2.0
+        ],
+        "y": [
+          0.0,
+          0.0
+        ],
+        "ease": "inout",
+        "note": "push to phone, rack"
+      },
+      "vector": "assets/proxy/11_owner_update_poster.svg",
+      "guides": "assets/guides/11_owner_update_poster_guides.svg",
+      "poster": "assets/still/11_owner_update_poster.jpg",
+      "posterIsProxy": true,
+      "video": "assets/video/11_owner_update.webm",
+      "videoIsProxy": true,
+      "finalVideo": "assets/video/11_owner_update.mp4"
+    },
+    {
+      "id": "12",
+      "slug": "afternoon_rest",
+      "title": "REST / AFTERNOON NAP",
+      "chapter": "REST",
+      "scroll": [
+        0.75,
+        0.8
+      ],
+      "duration": "6-8s",
+      "lens": "85mm",
+      "ratio": "2.39:1",
+      "light": "interior_day",
+      "overlay": [
+        "REST IS PART OF THE EXPERIENCE."
+      ],
+      "negativeSpace": "upper left",
+      "move": {
+        "dur": 7.0,
+        "z": [
+          1.02,
+          1.07
+        ],
+        "x": [
+          0.0,
+          0.0
+        ],
+        "y": [
+          0.0,
+          0.0
+        ],
+        "ease": "inout",
+        "note": "barely-there dolly"
+      },
+      "vector": "assets/proxy/12_afternoon_rest_poster.svg",
+      "guides": "assets/guides/12_afternoon_rest_poster_guides.svg",
+      "poster": "assets/still/12_afternoon_rest_poster.jpg",
+      "posterIsProxy": true,
+      "video": "assets/video/12_afternoon_rest.webm",
+      "videoIsProxy": true,
+      "finalVideo": "assets/video/12_afternoon_rest.mp4"
+    },
+    {
+      "id": "13",
+      "slug": "golden_hour",
+      "title": "GOLDEN HOUR",
+      "chapter": "GOLDEN HOUR",
+      "scroll": [
+        0.8,
+        0.87
+      ],
+      "duration": "6-8s",
+      "lens": "35mm",
+      "ratio": "2.39:1",
+      "light": "golden",
+      "overlay": [
+        "LUXURY STAYS.",
+        "GROUNDED IN NATURE."
+      ],
+      "negativeSpace": "upper left sky",
+      "move": {
+        "dur": 7.0,
+        "z": [
+          1.06,
+          1.12
+        ],
+        "x": [
+          -4.0,
+          4.0
+        ],
+        "y": [
+          1.0,
+          -1.0
+        ],
+        "ease": "inout",
+        "note": "slow orbit"
+      },
+      "vector": "assets/proxy/13_golden_hour_image.svg",
+      "guides": "assets/guides/13_golden_hour_image_guides.svg",
+      "poster": "assets/still/13_golden_hour_image.jpg",
+      "posterIsProxy": true,
+      "video": "assets/video/13_golden_hour_video.webm",
+      "videoIsProxy": true,
+      "finalVideo": "assets/video/13_golden_hour_video.mp4"
+    },
+    {
+      "id": "14",
+      "slug": "evening_retreat",
+      "title": "EVENING RETREAT",
+      "chapter": "EVENING",
+      "scroll": [
+        0.87,
+        0.91
+      ],
+      "duration": "5-8s",
+      "lens": "35mm",
+      "ratio": "2.39:1",
+      "light": "dusk",
+      "overlay": [],
+      "negativeSpace": "upper band / deep blue sky",
+      "move": {
+        "dur": 6.0,
+        "z": [
+          1.0,
+          1.1
+        ],
+        "x": [
+          0.0,
+          0.0
+        ],
+        "y": [
+          0.0,
+          1.0
+        ],
+        "ease": "inout",
+        "note": "track from behind"
+      },
+      "vector": "assets/proxy/14_evening_retreat_poster.svg",
+      "guides": "assets/guides/14_evening_retreat_poster_guides.svg",
+      "poster": "assets/still/14_evening_retreat_poster.jpg",
+      "posterIsProxy": true,
+      "video": "assets/video/14_evening_retreat.webm",
+      "videoIsProxy": true,
+      "finalVideo": "assets/video/14_evening_retreat.mp4"
+    },
+    {
+      "id": "15",
+      "slug": "bedtime",
+      "title": "BEDTIME",
+      "chapter": "EVENING",
+      "scroll": [
+        0.91,
+        0.94
+      ],
+      "duration": "5-7s",
+      "lens": "50mm",
+      "ratio": "2.39:1",
+      "light": "interior_lamp",
+      "overlay": [],
+      "negativeSpace": "left third",
+      "move": {
+        "dur": 6.0,
+        "z": [
+          1.02,
+          1.14
+        ],
+        "x": [
+          -2.0,
+          1.0
+        ],
+        "y": [
+          0.0,
+          0.0
+        ],
+        "ease": "inout",
+        "note": "push-in to bed"
+      },
+      "vector": "assets/proxy/15_bedtime_poster.svg",
+      "guides": "assets/guides/15_bedtime_poster_guides.svg",
+      "poster": "assets/still/15_bedtime_poster.jpg",
+      "posterIsProxy": true,
+      "video": "assets/video/15_bedtime.webm",
+      "videoIsProxy": true,
+      "finalVideo": "assets/video/15_bedtime.mp4"
+    },
+    {
+      "id": "16",
+      "slug": "morning",
+      "title": "MORNING LIGHT",
+      "chapter": "MORNING",
+      "scroll": [
+        0.94,
+        0.965
+      ],
+      "duration": "5-7s",
+      "lens": "50mm",
+      "ratio": "2.39:1",
+      "light": "morning",
+      "overlay": [],
+      "negativeSpace": "upper right",
+      "move": {
+        "dur": 6.0,
+        "z": [
+          1.1,
+          1.02
+        ],
+        "x": [
+          0.0,
+          0.0
+        ],
+        "y": [
+          3.0,
+          -2.0
+        ],
+        "ease": "inout",
+        "note": "rise from floor light"
+      },
+      "vector": "assets/proxy/16_morning_poster.svg",
+      "guides": "assets/guides/16_morning_poster_guides.svg",
+      "poster": "assets/still/16_morning_poster.jpg",
+      "posterIsProxy": true,
+      "video": "assets/video/16_morning.webm",
+      "videoIsProxy": true,
+      "finalVideo": "assets/video/16_morning.mp4"
+    },
+    {
+      "id": "17",
+      "slug": "reunion",
+      "title": "REUNION",
+      "chapter": "REUNION",
+      "scroll": [
+        0.965,
+        0.985
+      ],
+      "duration": "5-8s",
+      "lens": "50mm",
+      "ratio": "2.39:1",
+      "light": "afternoon",
+      "overlay": [
+        "WELCOME HOME."
+      ],
+      "negativeSpace": "upper left",
+      "move": {
+        "dur": 6.0,
+        "z": [
+          1.12,
+          1.04
+        ],
+        "x": [
+          3.0,
+          -1.0
+        ],
+        "y": [
+          0.0,
+          1.0
+        ],
+        "ease": "out",
+        "note": "follow and settle",
+        "handheld": true
+      },
+      "vector": "assets/proxy/17_reunion_poster.svg",
+      "guides": "assets/guides/17_reunion_poster_guides.svg",
+      "poster": "assets/still/17_reunion_poster.jpg",
+      "posterIsProxy": true,
+      "video": "assets/video/17_reunion.webm",
+      "videoIsProxy": true,
+      "finalVideo": "assets/video/17_reunion.mp4"
+    },
+    {
+      "id": "18",
+      "slug": "final_hero",
+      "title": "FINAL HERO / RETURN TO NATURE",
+      "chapter": "CLOSE",
+      "scroll": [
+        0.985,
+        1.0
+      ],
+      "duration": "6-8s",
+      "lens": "35mm",
+      "ratio": "2.39:1",
+      "light": "golden",
+      "overlay": [
+        "CANYON & COLLAR",
+        "LUXURY STAYS.",
+        "GROUNDED IN NATURE."
+      ],
+      "negativeSpace": "entire left half and lower third \u2014 reserve for wordmark and three CTAs",
+      "move": {
+        "dur": 7.0,
+        "z": [
+          1.0,
+          1.08
+        ],
+        "x": [
+          0.0,
+          0.0
+        ],
+        "y": [
+          0.0,
+          0.0
+        ],
+        "ease": "inout",
+        "note": "final slow dolly-in"
+      },
+      "vector": "assets/proxy/18_final_hero_image.svg",
+      "guides": "assets/guides/18_final_hero_image_guides.svg",
+      "poster": "assets/still/18_final_hero_image.jpg",
+      "posterIsProxy": true,
+      "video": "assets/video/18_final_hero_video.webm",
+      "videoIsProxy": true,
+      "finalVideo": "assets/video/18_final_hero_video.mp4"
+    },
+    {
+      "id": "19",
+      "slug": "signature_collar_macro",
+      "title": "SIGNATURE BRAND SHOT \u2014 COLLAR MACRO",
+      "chapter": "BRAND",
+      "scroll": null,
+      "duration": "4-6s",
+      "lens": "100mm macro",
+      "ratio": "16:9",
+      "light": "macro",
+      "overlay": [
+        "CANYON & COLLAR",
+        "LUXURY STAYS. GROUNDED IN NATURE."
+      ],
+      "negativeSpace": "right two-thirds",
+      "move": {
+        "dur": 5.0,
+        "z": [
+          1.04,
+          1.26
+        ],
+        "x": [
+          -3.0,
+          3.0
+        ],
+        "y": [
+          1.0,
+          -2.0
+        ],
+        "ease": "inout",
+        "note": "macro drift to tag"
+      },
+      "vector": "assets/proxy/19_signature_collar_macro_image.svg",
+      "guides": "assets/guides/19_signature_collar_macro_image_guides.svg",
+      "poster": "assets/still/19_signature_collar_macro_image.jpg",
+      "posterIsProxy": true,
+      "video": "assets/video/19_signature_collar_macro_video.webm",
+      "videoIsProxy": true,
+      "finalVideo": "assets/video/19_signature_collar_macro_video.mp4"
+    }
+  ]
+}
