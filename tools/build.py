@@ -15,7 +15,7 @@ import sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 import proxy
-from asset_spec import (ASSETS, BRAND, CONTINUITY, LIGHT, MOVES, NEGATIVE, PALETTE,
+from asset_spec import (ASSETS, BRAND, CONTINUITY, FILM, LIGHT, MOVES, NEGATIVE, PALETTE,
                         TECH_IMAGE, TECH_VIDEO, filebase, poster_base)
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -172,13 +172,15 @@ Text is composited by the website. Nothing below is rendered into an asset.
 
 
 def main():
-    for d in ("proxy", "guides", "still", "video"):
+    for d in ("proxy", "guides", "video"):
         os.makedirs(os.path.join(ROOT, "assets", d), exist_ok=True)
     manifest = {
         "brand": BRAND,
         "palette": PALETTE,
-        "note": "Proxy plates are placeholders. Replace poster/video paths with the final "
-                "renders; nothing else in the site needs to change.",
+        "note": "The site plays one continuous film behind the whole journey. Chapters "
+                "supply the scroll ranges and overlay typography; `vector` and `guides` are "
+                "art-direction references, not site assets.",
+        "film": FILM,
         "chapters": [],
     }
 
@@ -190,7 +192,6 @@ def main():
                      show_guides=False)
         proxy.render(a, light, os.path.join(ROOT, "assets", "guides", f"{pb}_guides.svg"),
                      show_guides=True)
-        vb = filebase(a, "video") if "video" in a["outputs"] else None
         manifest["chapters"].append({
             "id": a["id"],
             "slug": a["slug"],
@@ -206,11 +207,7 @@ def main():
             "move": MOVES[a["id"]],
             "vector": f"assets/proxy/{pb}.svg",
             "guides": f"assets/guides/{pb}_guides.svg",
-            "poster": f"assets/still/{pb}.jpg",
-            "posterIsProxy": True,
-            "video": f"assets/video/{vb}.webm" if vb else None,
-            "videoIsProxy": True,
-            "finalVideo": f"assets/video/{vb}.mp4" if vb else None,
+            "deliverables": [filebase(a, k) for k in a["outputs"]],
         })
 
     with open(os.path.join(ROOT, "assets", "manifest.json"), "w") as f:

@@ -14,6 +14,21 @@ BRAND = {
 }
 
 # ---------------------------------------------------------------------------
+# The film. One continuous piece of footage plays behind the entire scroll
+# journey; the chapters below supply the timing and the typography over it.
+# ---------------------------------------------------------------------------
+FILM = {
+    "src": "assets/video/canyon_collar_film.mp4",
+    "width": 1280,
+    "height": 720,
+    "duration": 10.06,
+    "fps": 24,
+    "hasAudio": True,
+    "note": "Supplied footage. Single keyframe, so it is played and looped rather "
+            "than scrubbed — seeking this encode frame by frame would stutter.",
+}
+
+# ---------------------------------------------------------------------------
 # Palette. Locked. Every prompt and every proxy plate pulls from here.
 # ---------------------------------------------------------------------------
 PALETTE = {

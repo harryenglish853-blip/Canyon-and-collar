@@ -14,27 +14,40 @@ retreat, from arrival to reunion, at their dog's eye level.
 |---|---|
 | `brand/` | Style bible, continuity bible, and the generated shot list |
 | `prompts/` | One generation brief per scene — image prompt, video prompt, negative prompt, camera, motion, transition, audio |
-| `assets/proxy/` | Vector proxy plates, one per scene |
-| `assets/guides/` | The same plates with reserved typography space marked, for art direction |
-| `assets/still/` | Rendered proxy stills (JPEG, 2.39:1) |
-| `assets/video/` | Rendered proxy motion (WebM, 24fps, with the specified camera move) |
+| `assets/video/canyon_collar_film.mp4` | The film the site plays |
+| `assets/proxy/` | Vector art-direction plates, one per scene |
+| `assets/guides/` | The same plates with reserved typography space marked |
 | `assets/manifest.json` | The single file the website reads |
 | `site/` | The scroll experience, wired to the manifest |
 | `tools/` | The generator — one source of truth for all of the above |
 
-## Read this first
+## How the site plays
 
-**The files in `assets/still/` and `assets/video/` are proxies, not the final
-assets.** They are procedurally generated stand-ins: correct aspect ratio,
-correct palette, correct composition blocking, correct reserved negative space,
-correct camera move, correct duration, correct cut points. They exist so the
-scroll experience can be built, timed, reviewed and signed off before a single
-frame of real footage is shot or generated.
+`assets/video/canyon_collar_film.mp4` runs as one continuous film behind the
+entire scroll. The chapters supply the timing and the typography over it: each
+owns a slice of the page scroll, and its copy dissolves in and out as that
+slice passes.
 
-The real assets are produced from `prompts/`. Every brief is copy-paste ready
-for a photoreal image or video model, and each one carries the locked
-continuity block so the property, the dog, the wardrobe and the props do not
-drift between scenes.
+The film is played and looped rather than scrubbed. The supplied encode carries
+a single keyframe, so seeking it frame by frame would stutter on every scroll
+tick — looping keeps it smooth and keeps the atmosphere moving while the
+viewer reads.
+
+It has an audio track, so the page offers sound rather than forcing it: the
+film starts muted (browsers require that to autoplay) and a control in the
+corner lets the viewer turn it on.
+
+Specs: 1280×720, 10.06s, 24fps, H.264 + AAC.
+
+## Shooting the rest
+
+`prompts/` holds a generation brief per scene — copy-paste ready for a
+photoreal image or video model, each carrying the locked continuity block so
+the property, the dog, the wardrobe and the props do not drift between scenes.
+
+`assets/proxy/` and `assets/guides/` are vector art-direction plates: framing,
+palette and the typography space each shot has to keep clear. They are
+references for shooting, not site assets.
 
 ## The journey
 
@@ -73,28 +86,28 @@ npx http-server . -p 8080     # serve from the repo root, not from site/
 It must be served over HTTP — the page fetches `assets/manifest.json`, which a
 `file://` origin will block.
 
-## Swapping proxies for final footage
+## Changing the film
 
-1. Drop the final files into `assets/still/` and `assets/video/` using the names
-   in `brand/SHOT_LIST.md`.
-2. In `assets/manifest.json`, point `poster` and `video` at them and set
-   `posterIsProxy` / `videoIsProxy` to `false`.
+Replace `assets/video/canyon_collar_film.mp4`, or point `film.src` in
+`assets/manifest.json` somewhere else. `film.hasAudio` controls whether the
+sound toggle appears at all.
 
-Nothing in `site/` needs to change. The scroll ranges, overlay copy, chapter
-rail and cross-dissolves are all driven by the manifest.
-
-Final delivery targets, for when the real renders land: H.264 MP4 and WebM,
-2.39:1 at 3840×1608 mastered, 1920×804 for the web, 24fps, no audio on the
-scroll loops (the page is silent by default), plus JPEG poster frames at
-2390×1000.
+Delivery targets for further footage: H.264 MP4 (plus WebM for breadth),
+1920×1080 or 2.39:1 at 1920×804, 24fps, and a keyframe every second or two if
+you ever want scroll-scrubbed playback instead of looping.
 
 ## Regenerating
 
 ```bash
-python3 tools/build.py                        # prompts, plates, shot list, manifest
-NODE_PATH=$(npm root -g) node tools/render.js  # stills and proxy motion
+python3 tools/build.py                         # prompts, plates, shot list, manifest
+NODE_PATH=$(npm root -g) node tools/render.js  # optional: animated proxy previews
 NODE_PATH=$(npm root -g) node tools/render.js --stills --only 13
 ```
+
+`render.js` is optional now that real footage is in. It exists to animate the
+vector plates into rough previews of a scene's camera move — useful when
+briefing a shot, not something the site loads. Output lands in `assets/still/`
+and `assets/video/`, and neither is committed.
 
 `tools/asset_spec.py` is the single source of truth — scene text, palette,
 lighting states, continuity block, negative prompt, scroll ranges and camera

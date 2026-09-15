@@ -75,25 +75,32 @@ function page_html(svg, w, h, label) {
 
   for (const c of chapters) {
     const svg = fs.readFileSync(path.join(ROOT, c.vector), 'utf8');
+    const base = path.basename(c.vector, '.svg');
+    const poster = path.join('assets', 'still', `${base}.jpg`);
+    const videoName = c.deliverables.find(d => d.endsWith('_video'))
+      || (c.deliverables.length === 1 && !c.deliverables[0].endsWith('_image')
+          ? c.deliverables[0] : null);
+    const video = videoName ? path.join('assets', 'video', `${videoName}.webm`) : null;
     const [bw, bh] = c.ratio === '2.39:1' ? [2390, 1000] : [1920, 1080];
 
     // ---- still -------------------------------------------------------------
+    fs.mkdirSync(path.join(ROOT, 'assets', 'still'), { recursive: true });
     const stillPage = await browser.newPage({ viewport: { width: bw, height: bh } });
     await stillPage.setContent(page_html(svg, bw, bh, ''), { waitUntil: 'load' });
     await stillPage.evaluate(() => window.setFrame(1, 0, 0, 3, 0));
     await stillPage.locator('#stage').screenshot({
-      path: path.join(ROOT, c.poster), type: 'jpeg', quality: 92,
+      path: path.join(ROOT, poster), type: 'jpeg', quality: 92,
     });
     await stillPage.close();
-    console.log('still  ' + c.poster);
+    console.log('still  ' + poster);
 
-    if (stillsOnly || !c.video) continue;
+    if (stillsOnly || !video) continue;
 
     // ---- motion ------------------------------------------------------------
     const [vw, vh] = c.ratio === '2.39:1' ? [1600, 670] : [1600, 900];
     const m = c.move;
     const frames = Math.round(m.dur * FPS);
-    const out = path.join(ROOT, c.video);
+    const out = path.join(ROOT, video);
 
     // This ffmpeg build only demuxes image2pipe, so frames are streamed straight
     // from the browser into the encoder — nothing hits the disk in between.
@@ -134,7 +141,7 @@ function page_html(svg, w, h, label) {
     await done;
     await p.close();
     const kb = Math.round(fs.statSync(out).size / 1024);
-    console.log(`motion ${c.video}  ${frames} frames  ${m.dur}s  ${kb}KB  (${m.note})`);
+    console.log(`motion ${video}  ${frames} frames  ${m.dur}s  ${kb}KB  (${m.note})`);
   }
 
   await browser.close();

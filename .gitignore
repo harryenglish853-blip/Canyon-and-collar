@@ -1,4 +1,5 @@
 node_modules/
 .DS_Store
 *.log
-assets/_frames/
+assets/still/
+assets/video/*.webm

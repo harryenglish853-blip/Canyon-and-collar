@@ -16,7 +16,16 @@
     "soft_black": "#1A1816",
     "sunset_amber": "#E0A04A"
   },
-  "note": "Proxy plates are placeholders. Replace poster/video paths with the final renders; nothing else in the site needs to change.",
+  "note": "The site plays one continuous film behind the whole journey. Chapters supply the scroll ranges and overlay typography; `vector` and `guides` are art-direction references, not site assets.",
+  "film": {
+    "src": "assets/video/canyon_collar_film.mp4",
+    "width": 1280,
+    "height": 720,
+    "duration": 10.06,
+    "fps": 24,
+    "hasAudio": true,
+    "note": "Supplied footage. Single keyframe, so it is played and looped rather than scrubbed \u2014 seeking this encode frame by frame would stutter."
+  },
   "chapters": [
     {
       "id": "01",
@@ -55,11 +64,10 @@
       },
       "vector": "assets/proxy/01_canyon_collar_arrival_image.svg",
       "guides": "assets/guides/01_canyon_collar_arrival_image_guides.svg",
-      "poster": "assets/still/01_canyon_collar_arrival_image.jpg",
-      "posterIsProxy": true,
-      "video": "assets/video/01_canyon_collar_arrival_video.webm",
-      "videoIsProxy": true,
-      "finalVideo": "assets/video/01_canyon_collar_arrival_video.mp4"
+      "deliverables": [
+        "01_canyon_collar_arrival_image",
+        "01_canyon_collar_arrival_video"
+      ]
     },
     {
       "id": "02",
@@ -97,11 +105,9 @@
       },
       "vector": "assets/proxy/02_concierge_welcome_poster.svg",
       "guides": "assets/guides/02_concierge_welcome_poster_guides.svg",
-      "poster": "assets/still/02_concierge_welcome_poster.jpg",
-      "posterIsProxy": true,
-      "video": "assets/video/02_concierge_welcome.webm",
-      "videoIsProxy": true,
-      "finalVideo": "assets/video/02_concierge_welcome.mp4"
+      "deliverables": [
+        "02_concierge_welcome"
+      ]
     },
     {
       "id": "03",
@@ -137,11 +143,9 @@
       },
       "vector": "assets/proxy/03_leash_handoff_poster.svg",
       "guides": "assets/guides/03_leash_handoff_poster_guides.svg",
-      "poster": "assets/still/03_leash_handoff_poster.jpg",
-      "posterIsProxy": true,
-      "video": "assets/video/03_leash_handoff.webm",
-      "videoIsProxy": true,
-      "finalVideo": "assets/video/03_leash_handoff.mp4"
+      "deliverables": [
+        "03_leash_handoff"
+      ]
     },
     {
       "id": "04",
@@ -180,11 +184,10 @@
       },
       "vector": "assets/proxy/04_private_suite_image.svg",
       "guides": "assets/guides/04_private_suite_image_guides.svg",
-      "poster": "assets/still/04_private_suite_image.jpg",
-      "posterIsProxy": true,
-      "video": "assets/video/04_private_suite_video.webm",
-      "videoIsProxy": true,
-      "finalVideo": "assets/video/04_private_suite_video.mp4"
+      "deliverables": [
+        "04_private_suite_image",
+        "04_private_suite_video"
+      ]
     },
     {
       "id": "05",
@@ -220,11 +223,9 @@
       },
       "vector": "assets/proxy/05_personal_belongings_poster.svg",
       "guides": "assets/guides/05_personal_belongings_poster_guides.svg",
-      "poster": "assets/still/05_personal_belongings_poster.jpg",
-      "posterIsProxy": true,
-      "video": "assets/video/05_personal_belongings.webm",
-      "videoIsProxy": true,
-      "finalVideo": "assets/video/05_personal_belongings.mp4"
+      "deliverables": [
+        "05_personal_belongings"
+      ]
     },
     {
       "id": "06",
@@ -262,11 +263,10 @@
       },
       "vector": "assets/proxy/06_nature_walk_image.svg",
       "guides": "assets/guides/06_nature_walk_image_guides.svg",
-      "poster": "assets/still/06_nature_walk_image.jpg",
-      "posterIsProxy": true,
-      "video": "assets/video/06_nature_walk_video.webm",
-      "videoIsProxy": true,
-      "finalVideo": "assets/video/06_nature_walk_video.mp4"
+      "deliverables": [
+        "06_nature_walk_image",
+        "06_nature_walk_video"
+      ]
     },
     {
       "id": "07",
@@ -302,11 +302,9 @@
       },
       "vector": "assets/proxy/07_outdoor_exploration_poster.svg",
       "guides": "assets/guides/07_outdoor_exploration_poster_guides.svg",
-      "poster": "assets/still/07_outdoor_exploration_poster.jpg",
-      "posterIsProxy": true,
-      "video": "assets/video/07_outdoor_exploration.webm",
-      "videoIsProxy": true,
-      "finalVideo": "assets/video/07_outdoor_exploration.mp4"
+      "deliverables": [
+        "07_outdoor_exploration"
+      ]
     },
     {
       "id": "08",
@@ -342,11 +340,9 @@
       },
       "vector": "assets/proxy/08_fresh_water_poster.svg",
       "guides": "assets/guides/08_fresh_water_poster_guides.svg",
-      "poster": "assets/still/08_fresh_water_poster.jpg",
-      "posterIsProxy": true,
-      "video": "assets/video/08_fresh_water.webm",
-      "videoIsProxy": true,
-      "finalVideo": "assets/video/08_fresh_water.mp4"
+      "deliverables": [
+        "08_fresh_water"
+      ]
     },
     {
       "id": "09",
@@ -385,11 +381,9 @@
       },
       "vector": "assets/proxy/09_personalized_meal_poster.svg",
       "guides": "assets/guides/09_personalized_meal_poster_guides.svg",
-      "poster": "assets/still/09_personalized_meal_poster.jpg",
-      "posterIsProxy": true,
-      "video": "assets/video/09_personalized_meal.webm",
-      "videoIsProxy": true,
-      "finalVideo": "assets/video/09_personalized_meal.mp4"
+      "deliverables": [
+        "09_personalized_meal"
+      ]
     },
     {
       "id": "10",
@@ -427,11 +421,9 @@
       },
       "vector": "assets/proxy/10_concierge_care_poster.svg",
       "guides": "assets/guides/10_concierge_care_poster_guides.svg",
-      "poster": "assets/still/10_concierge_care_poster.jpg",
-      "posterIsProxy": true,
-      "video": "assets/video/10_concierge_care.webm",
-      "videoIsProxy": true,
-      "finalVideo": "assets/video/10_concierge_care.mp4"
+      "deliverables": [
+        "10_concierge_care"
+      ]
     },
     {
       "id": "11",
@@ -470,11 +462,9 @@
       },
       "vector": "assets/proxy/11_owner_update_poster.svg",
       "guides": "assets/guides/11_owner_update_poster_guides.svg",
-      "poster": "assets/still/11_owner_update_poster.jpg",
-      "posterIsProxy": true,
-      "video": "assets/video/11_owner_update.webm",
-      "videoIsProxy": true,
-      "finalVideo": "assets/video/11_owner_update.mp4"
+      "deliverables": [
+        "11_owner_update"
+      ]
     },
     {
       "id": "12",
@@ -512,11 +502,9 @@
       },
       "vector": "assets/proxy/12_afternoon_rest_poster.svg",
       "guides": "assets/guides/12_afternoon_rest_poster_guides.svg",
-      "poster": "assets/still/12_afternoon_rest_poster.jpg",
-      "posterIsProxy": true,
-      "video": "assets/video/12_afternoon_rest.webm",
-      "videoIsProxy": true,
-      "finalVideo": "assets/video/12_afternoon_rest.mp4"
+      "deliverables": [
+        "12_afternoon_rest"
+      ]
     },
     {
       "id": "13",
@@ -555,11 +543,10 @@
       },
       "vector": "assets/proxy/13_golden_hour_image.svg",
       "guides": "assets/guides/13_golden_hour_image_guides.svg",
-      "poster": "assets/still/13_golden_hour_image.jpg",
-      "posterIsProxy": true,
-      "video": "assets/video/13_golden_hour_video.webm",
-      "videoIsProxy": true,
-      "finalVideo": "assets/video/13_golden_hour_video.mp4"
+      "deliverables": [
+        "13_golden_hour_image",
+        "13_golden_hour_video"
+      ]
     },
     {
       "id": "14",
@@ -595,11 +582,9 @@
       },
       "vector": "assets/proxy/14_evening_retreat_poster.svg",
       "guides": "assets/guides/14_evening_retreat_poster_guides.svg",
-      "poster": "assets/still/14_evening_retreat_poster.jpg",
-      "posterIsProxy": true,
-      "video": "assets/video/14_evening_retreat.webm",
-      "videoIsProxy": true,
-      "finalVideo": "assets/video/14_evening_retreat.mp4"
+      "deliverables": [
+        "14_evening_retreat"
+      ]
     },
     {
       "id": "15",
@@ -635,11 +620,9 @@
       },
       "vector": "assets/proxy/15_bedtime_poster.svg",
       "guides": "assets/guides/15_bedtime_poster_guides.svg",
-      "poster": "assets/still/15_bedtime_poster.jpg",
-      "posterIsProxy": true,
-      "video": "assets/video/15_bedtime.webm",
-      "videoIsProxy": true,
-      "finalVideo": "assets/video/15_bedtime.mp4"
+      "deliverables": [
+        "15_bedtime"
+      ]
     },
     {
       "id": "16",
@@ -675,11 +658,9 @@
       },
       "vector": "assets/proxy/16_morning_poster.svg",
       "guides": "assets/guides/16_morning_poster_guides.svg",
-      "poster": "assets/still/16_morning_poster.jpg",
-      "posterIsProxy": true,
-      "video": "assets/video/16_morning.webm",
-      "videoIsProxy": true,
-      "finalVideo": "assets/video/16_morning.mp4"
+      "deliverables": [
+        "16_morning"
+      ]
     },
     {
       "id": "17",
@@ -718,11 +699,9 @@
       },
       "vector": "assets/proxy/17_reunion_poster.svg",
       "guides": "assets/guides/17_reunion_poster_guides.svg",
-      "poster": "assets/still/17_reunion_poster.jpg",
-      "posterIsProxy": true,
-      "video": "assets/video/17_reunion.webm",
-      "videoIsProxy": true,
-      "finalVideo": "assets/video/17_reunion.mp4"
+      "deliverables": [
+        "17_reunion"
+      ]
     },
     {
       "id": "18",
@@ -762,11 +741,10 @@
       },
       "vector": "assets/proxy/18_final_hero_image.svg",
       "guides": "assets/guides/18_final_hero_image_guides.svg",
-      "poster": "assets/still/18_final_hero_image.jpg",
-      "posterIsProxy": true,
-      "video": "assets/video/18_final_hero_video.webm",
-      "videoIsProxy": true,
-      "finalVideo": "assets/video/18_final_hero_video.mp4"
+      "deliverables": [
+        "18_final_hero_image",
+        "18_final_hero_video"
+      ]
     },
     {
       "id": "19",
@@ -802,11 +780,10 @@
       },
       "vector": "assets/proxy/19_signature_collar_macro_image.svg",
       "guides": "assets/guides/19_signature_collar_macro_image_guides.svg",
-      "poster": "assets/still/19_signature_collar_macro_image.jpg",
-      "posterIsProxy": true,
-      "video": "assets/video/19_signature_collar_macro_video.webm",
-      "videoIsProxy": true,
-      "finalVideo": "assets/video/19_signature_collar_macro_video.mp4"
+      "deliverables": [
+        "19_signature_collar_macro_image",
+        "19_signature_collar_macro_video"
+      ]
     }
   ]
 }
