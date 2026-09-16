@@ -29,9 +29,10 @@
     .then(build)
     .catch(err => { STATE.textContent = 'Manifest failed to load'; console.error(err); });
 
-  function makeFilm(src, preload = 'auto') {
+  function makeFilm(film, preload = 'auto') {
     const v = document.createElement('video');
-    v.src = '../' + src;
+    v.src = '../' + film.src;
+    if (film.poster) v.poster = '../' + film.poster;
     v.muted = true;
     v.loop = true;
     v.playsInline = true;
@@ -46,7 +47,7 @@
     // Enough runway that every chapter gets real scroll time of its own.
     JOURNEY.style.height = `${spine.length * 135 + 100}svh`;
 
-    film = makeFilm(manifest.film.src);
+    film = makeFilm(manifest.film);
     film.className = 'film';
     STAGE.prepend(film);
     film.play().catch(() => {});
@@ -94,7 +95,7 @@
 
     // The closing band replays the same film. It stays unloaded until it is
     // nearly on screen — by then the file is in cache from the stage above.
-    const band = makeFilm(manifest.film.src, 'none');
+    const band = makeFilm(manifest.film, 'none');
     BRANDMARK.prepend(band);
     new IntersectionObserver(es => es.forEach(e => {
       if (reduced) return;

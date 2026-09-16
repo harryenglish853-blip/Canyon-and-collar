@@ -35,7 +35,17 @@ It has an audio track, so the page offers sound rather than forcing it: the
 film starts muted (browsers require that to autoplay) and a control in the
 corner lets the viewer turn it on.
 
-Specs: 1280×720, 10.06s, 24fps, H.264 + AAC.
+Two copies of the film are kept. `canyon_collar_film.mp4` is the master as
+delivered — 1280×720, 10.06s, 24fps, H.264 + AAC, with its metadata after the
+media, so a browser has to fetch all 10.8MB before the first frame appears.
+`canyon_collar_film_web.mp4` is what the site loads: same picture, fast-start,
+a keyframe every two seconds, 2.9MB, with `canyon_collar_poster.jpg` as the
+first paint.
+
+The footage is a single continuous arrival shot — the dog coming down out of
+the truck into golden-hour canyon light, the leash going on, the walk away. It
+covers chapter 01. The remaining chapters still need their own footage; their
+briefs are in `prompts/`.
 
 ## Shooting the rest
 

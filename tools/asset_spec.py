@@ -18,14 +18,19 @@ BRAND = {
 # journey; the chapters below supply the timing and the typography over it.
 # ---------------------------------------------------------------------------
 FILM = {
-    "src": "assets/video/canyon_collar_film.mp4",
+    "src": "assets/video/canyon_collar_film_web.mp4",
+    "master": "assets/video/canyon_collar_film.mp4",
+    "poster": "assets/video/canyon_collar_poster.jpg",
     "width": 1280,
     "height": 720,
     "duration": 10.06,
     "fps": 24,
     "hasAudio": True,
-    "note": "Supplied footage. Single keyframe, so it is played and looped rather "
-            "than scrubbed — seeking this encode frame by frame would stutter.",
+    "note": "Supplied footage: a single continuous arrival shot. `master` is the "
+            "file as delivered, with its metadata after the media — a browser has "
+            "to fetch all of it before the first frame. `src` is the web encode: "
+            "same picture, fast-start, a keyframe every two seconds, 2.9MB. Played "
+            "and looped rather than scrubbed.",
 }
 
 # ---------------------------------------------------------------------------
