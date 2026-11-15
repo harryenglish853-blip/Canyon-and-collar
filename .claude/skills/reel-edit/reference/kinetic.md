@@ -1,4 +1,4 @@
-# Reference breakdown
+# Look 1 - "kinetic" (reference: realtor talking-head reel)
 
 Source: a 37s vertical Instagram reel by a real-estate agent (supplied as a screen recording,
 IMG_2734.mov, 512x910 @30fps). Personal-brand talking-head: one speaker, white top, black skirt,

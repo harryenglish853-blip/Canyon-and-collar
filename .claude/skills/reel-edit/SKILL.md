@@ -1,119 +1,138 @@
 ---
 name: reel-edit
-description: Edit raw talking-head phone footage into a finished vertical Instagram/TikTok reel in the user's signature style - tight jump cuts, punch-in reframes, warm glowy grade, kinetic word-by-word captions with gradient/neon hero words, animated counters, pill callouts, floating photo cards, call banner, light streaks, flash and zoom-blur transitions. Use whenever the user hands over raw video clips (selfie/talking-to-camera, real-estate/business/personal-brand content) and wants them edited, cut, captioned or "made into a reel", or asks to edit "like the reference" / "in my style".
+description: Edit the user's raw phone/camera footage into a finished, sharp 1080x1920 Instagram/Facebook Reel in one of their two signature looks - "kinetic" (talking head, tight jump cuts, word-by-word captions with gradient/neon hero words, counters, pills, photo cards, call banner, light streaks, flashes) or "cinematic" (B-roll shot sequences between locations, giant yellow condensed titles often behind the subject, small serif subtitles, collages, film grade). Use whenever the user hands over raw video clips or b-roll and wants them edited, cut, captioned, "made into a reel", or edited "like the reference" / "in my style".
 ---
 
-# Reel edit - talking-head, kinetic-caption style
+# Reel edit
 
-The style was learned from a reference reel (a realtor speaking straight to camera across
-5-6 outdoor locations, ~37s). `reference/style.md` has the full shot-by-shot breakdown - read
-it once before your first edit in a session. The short version:
+Two looks, both learned from reference reels the user supplied. Read the matching reference file
+once per session before editing - it has the beat-by-beat breakdown:
 
-**Style DNA**
-- **Every sentence is its own shot.** Hard jump cuts on sentence/phrase boundaries (avg ~2.5-5s),
-  no breaths, no "um", no dead air. Location or framing changes at most cuts:
-  wide (full body walking/sitting) <-> punched-in medium (waist-up).
-- **The words are the edit.** Captions appear word-by-word at the moment they're spoken, centred at
-  chest/face height, 1-3 words on screen. Small thin white "lead" words lead into one
-  **hero word per sentence** - huge, heavy, gradient (purple, cyan, silver) or neon yellow glow.
-  Hero = the number or payoff noun ("secret", "CLIENTS", "2026", "50 HOMES", "SOLD", "2 THINGS",
-  "skills", "Transparency", "investment").
-- **Every claim gets a visual proof.** Numbers count up ("12 -> 46 -> 50 HOMES") with photo cards of
-  the listings popping in around the speaker; "2 things" gets glowing pill buttons that land on each
-  item as it's said; "marketing" gets floating thumbnails of their posts; "clients reach out" gets an
-  incoming-call banner; "deliver" gets a neon light streak; social proof is a full-screen cutaway of a
-  real post.
-- **Motion everywhere, all of it fast:** text blurs/scales in (0.18-0.3s), zoom-blur whip into a new
-  section ("So, let's talk about how."), white flash on big beats, Ken-Burns on cutaways.
-- **Look:** warm, saturated greens, lifted and slightly glowy (bloom), soft vignette, golden-hour feel.
-- **Sound:** voice-first, compressed, -14 LUFS. No music needed; if added, keep it under the voice.
-- **Hook in the first second, loop at the end:** the opening line lands a hero word inside 0.5s; the
-  last shot returns to the opening location so the reel loops seamlessly.
+| look | reference | pick it when |
+|---|---|---|
+| **kinetic** | `reference/kinetic.md` (realtor talking head) | mostly talking to camera; claims, numbers, tips, business/personal-brand |
+| **cinematic** | `reference/cinematic.md` (creator moving between locations) | there's B-roll/travel/multiple places; storytelling, voice-over over visuals |
+
+If the user doesn't say, choose from the footage (lots of b-roll -> cinematic, all talking head ->
+kinetic) and say which you chose in one line. They can ask for "the realtor style" (kinetic) or
+"the cinematic / location style". Mixing is allowed: e.g. a kinetic reel can use a `title` for a
+location, a cinematic reel can use a `counter`.
+
+**Shared DNA (both looks):** no dead air, no ums, no retakes; a hook inside the first second; every
+claim gets a visual; cut on the word; the ending flows back into the opening so it loops.
+
+**Kinetic in short:** a jump cut at every sentence, alternating wide and punched-in framing; captions appear
+word by word at chest height; one huge hero word per sentence (purple/cyan gradient, neon yellow);
+counters, pills, photo cards, call banner, streaks, flash, zoom-blur; warm glow grade.
+
+**Cinematic in short:** B-roll mini-sequences carry the story while the voice runs (grab handle ->
+drive -> step out -> arrive); giant yellow Anton titles (place names, key words) fitted edge to edge
+in the top third, often **behind the subject**; quiet small yellow serif subtitles; collages of past
+work; one location per "here"; hand-over-lens and rack-focus transitions; natural film grade.
+
+## Quality rules (the user posts to IG and FB Reels - it must never look soft)
+
+- **Delivery spec (handled by `render`/`deliver`):** 1080x1920 9:16, H.264 High 4.2, 30fps CFR,
+  yuv420p BT.709, CRF 16 capped at 25 Mbps (≈15-25 Mbps), AAC 320k 48kHz, faststart.
+  1080x1920 is the maximum both apps display; uploading larger only lets the app downscale it
+  worse, so we downscale ourselves once, with lanczos, from the camera original.
+- **The source decides sharpness.** `plan` prints a WARNING for any clip below 1080x1920 after the
+  crop. When you see it, tell the user plainly and ask for the original camera file. Screen
+  recordings, WhatsApp/Messenger/AirDrop "compatible" copies and downloads from Instagram are the
+  usual culprits. The first test edit looked blurry because its source was a 512x910 screen
+  recording. No upscaling fixes that.
+- No punch-in on footage that's already short of pixels (`plan` drops it to 1.0 automatically).
+  4K sources can punch in to ~1.9x with no loss.
+- Pipeline quality: one lanczos resample from the camera pixels, light unsharp, CRF 10
+  intermediates, HyperFrames frames extracted as PNG, near-lossless master, then exactly one
+  delivery encode. Don't add extra re-encodes (no exporting then re-importing).
+- iPhone HDR (HLG/Dolby Vision) is tone-mapped to SDR in `base`. Delivering HDR to Reels is
+  unreliable, so it stays SDR.
+- Tell the user to upload with **"Upload at highest quality"** turned on (Instagram: Settings ->
+  Data usage and media quality; Facebook: Settings -> Media -> Video quality: HD) and over Wi-Fi.
+- Duration: Facebook Reels max 90s; Instagram up to 3 min. `deliver` warns past 90s.
 
 ## Tools
 
-`scripts/reel.py` (Python 3, ffmpeg, Groq Whisper for transcription, HyperFrames for the graphics
-render). Check prerequisites first:
-
+`scripts/reel.py` uses Python 3, ffmpeg, Groq Whisper for transcripts, HyperFrames for graphics, and
+rembg for the text-behind-subject matte. Check the prerequisites first:
 ```bash
-hyperframes --version && python3 -c "import groq" && ffmpeg -version | head -1
-# missing? npm i -g hyperframes ; pip install groq
+hyperframes --version && python3 -c "import groq, rembg, fontTools" && ffmpeg -version | head -1
+# missing: npm i -g hyperframes ; pip install groq "rembg[cpu]" fonttools brotli
 ```
 Groq: in this cloud environment the proxy injects the key (any dummy value works); elsewhere set `GROQ_API_KEY`.
-HyperFrames renders offline - GSAP and the Inter font are copied into the project, never pulled from a CDN.
+Fonts (Inter, Anton, Instrument Serif) and GSAP are copied into each project, so renders never hit a CDN.
 
 ## Workflow
 
 Work in the scratchpad (or a folder the user names); `R=<skill dir>/scripts/reel.py`.
 
-1. **Inspect the raw files.** `ffprobe` each (duration, orientation, HDR?), and make a contact sheet
-   (`ffmpeg -i clip -vf fps=1,scale=240:-1,tile=8x4 sheet.jpg`) and look at it - know which clip is
-   which location/framing before cutting.
-2. **Cut plan:** `python3 $R plan raw1.mov raw2.mov ... -o edl.json` - transcribes every clip
-   (cached `*.words.json`), splits into phrases at pauses, drops fillers, marks retakes `keep:false`
-   (an earlier take whose opening is repeated later), alternates zoom 1.0 / 1.14 / 1.0 / 1.08.
-   **Review edl.json yourself** - this is editorial judgement, not a formality:
-   - read the kept text top to bottom: does it read as one clean script? Remove flubs, false starts,
-     repeated takes the heuristic missed; reorder segments if the user's clips are out of order.
-   - order clips by the story, not by filename, when the user's script says so.
-   - `zoom` per segment (1.0 wide - 1.2 tight) and `focus_y` (0 = keep top, 0.38 default keeps
-     faces in frame) - set framing so consecutive shots differ.
-   - `grade`: `warm-glow` (default, the reference look), `clean`, `none`, or a raw ffmpeg filter.
-3. **Base edit:** `python3 $R base edl.json -o work` -> `work/base.mp4` (1080x1920, 30fps, graded,
-   HDR tone-mapped, loudness -14 LUFS) and `work/words.json` (word timings on the new timeline).
-4. **Draft captions:** `python3 $R captions work` -> `work/plan.json` (word-by-word captions, one
-   auto-picked hero word per sentence, rotating colours).
-5. **Art-direct plan.json - the creative step; never ship the draft as-is.** Read the script and:
-   - pick each sentence's hero word yourself (numbers, results, the emotional payoff); give hooks and
-     section openers `hook` (giant thin white, top third, y≈0.2) or a pop style at y≈0.2-0.3;
-   - keep ordinary captions at y≈0.45-0.5 (chest), and keep them off the face;
-   - add overlays for every claim (types below). Ask the user for b-roll/photos when the script
-     mentions listings, posts, results, testimonials - cards/cutaways need real images;
-   - `punch` at every new section, `flash` on the biggest one or two beats, not more.
-6. **Compose + render:** `python3 $R compose work work/plan.json && python3 $R render work -o final.mp4`
-   (`-q draft` for a quick look; default `delivery`). ~1 min render per 15s of video.
-7. **QA before handing over:** pull a frame at every hero word/overlay
-   (`ffmpeg -ss T -i final.mp4 -frames:v 1 f.png`), tile them, look: text centred and uncropped,
-   not over the face, nothing lingering past its line, cuts clean. Check loudness
-   (`ffmpeg -i final.mp4 -af ebur128 -f null -`, I ≈ -14). Fix plan.json and re-compose; only re-run
-   `base` if cuts/grade changed.
-8. Deliver `final.mp4` to the user (SendUserFile) with a two-line summary of what was cut and which
-   moments got graphics; offer to swap hero words, colours or overlays.
+1. **Inspect.** `ffprobe` every file (resolution after rotation, fps, HDR). Make a contact sheet
+   (`ffmpeg -i clip -vf fps=1,scale=240:-1,tile=8x4 sheet.jpg`) and look at it. Sort the files into
+   A-roll (talking) and B-roll (no speech), and note the locations.
+2. **Cut plan.** Run `python3 $R plan A1.mov A2.mov ... --look kinetic|cinematic --broll B1.mov B2.mov -o edl.json`.
+   It transcribes (cached), splits into phrases, drops fillers, flags retakes, sets zooms and warns about resolution.
+   **Review edl.json yourself:** read the kept text as a script. Drop flubs and repeats the heuristic
+   missed, reorder by story, and set `zoom` (1.0-1.2) and `focus_y` (0 keeps the top, 0.38 is the default).
+   Set the `grade`: `warm-glow` (kinetic), `cine-natural` (cinematic), `clean`, `none`, or any ffmpeg filter.
+   For each b-roll entry, set `at` (seconds on the **edited** timeline, i.e. after cuts; check
+   `work/words.json` after a first `base` run), `in`, and `dur`. Optionally set `sfx` (0-1) to mix in its natural
+   sound under the voice (door clunk, engine, footsteps). B-roll replaces the picture; the voice keeps running.
+   Cinematic: build mini-sequences of 0.4-0.8s shots that land the arrival shot on the word.
+3. **Base.** `python3 $R base edl.json -o work` produces `work/base.mp4` (graded, b-roll inserted,
+   -14 LUFS) and `work/words.json`. Re-run after changing b-roll `at` values.
+4. **Draft captions.** `python3 $R captions work` writes `work/plan.json`. Kinetic gets word-by-word
+   captions with hero words; cinematic gets serif phrase subtitles.
+5. **Art-direct plan.json.** This is the creative step, so never ship the draft as-is.
+   - Kinetic: choose the hero words yourself; hooks get `hook` or a pop style at y≈0.2. Add a
+     counter, pills, cards, call, streak, punch or flash wherever there's a claim.
+   - Cinematic: add a `title` for every location name and the 1-2 key words of the reel (use
+     `"behind": true` when the subject is under the title area; titles sit at y≈0.06-0.3). Add a `grid`
+     when they mention past work. Keep subtitles off titles (y≈0.62-0.7).
+   - Ask the user for photos, b-roll or screenshots whenever the script references things you
+     don't have. Cards, grids and cutaways need real images.
+6. **Compose + render.** Run `python3 $R compose work work/plan.json && python3 $R render work -o final.mp4`.
+   This writes the near-lossless `work/master.mp4`, then the Reels-spec `final.mp4`. Use `-q draft` for previews.
+   Allow about 1-2 minutes of render time per 15s of video, plus about 30s per second of "behind" title (matting).
+7. **QA.** Pull a frame at every title, hero word and overlay, then tile and look at them. Check that
+   text is fitted and uncropped, faces are clear of text, nothing outstays its line, and the person
+   sits in front of the "behind" titles. Check sharpness on a 1:1 crop of a face. Check loudness
+   (`ffmpeg -i final.mp4 -af ebur128 -f null -`, I ≈ -14). Fix the plan and re-compose.
+8. **Deliver.** Send `final.mp4` (SendUserFile) with a short summary of what was cut and which
+   moments got graphics, the upload-quality tip, and any resolution warnings.
 
 ## plan.json reference
 
 ```jsonc
 {"captions": [
-  {"start": 0.0, "end": 0.95, "y": 0.40,            // seconds on the edited timeline; y = fraction of height (centre)
-   "lines": [ {"style": "lead",      "words": [["It's", 0.0], ["no", 0.18]]},
-              {"style": "pop-cyan",  "words": [["secret,", 0.3]]} ]}],   // each word appears at its own time
+  {"start": 0.0, "end": 0.95, "y": 0.40,                    // seconds on the edited timeline; y = fraction of height (centre)
+   "lines": [ {"style": "lead",     "words": [["It's", 0.0], ["no", 0.18]]},
+              {"style": "pop-cyan", "words": [["secret,", 0.3]]} ]}],   // each word appears at its own time
  "overlays": [ ... ]}
 ```
-Caption styles: `lead` (thin small white), `word` (medium white, default single-line captions),
-`hook` (giant thin white), `white-heavy`, `pop-purple`, `pop-cyan`, `pop-silver` (gradient heavy),
-`neon-yellow` (glowing). Text may be edited freely (e.g. "2 weeks" -> "2 WEEKS", merge two words into
-one hero) - timings come from words.json.
+Caption styles: `lead` (thin small white), `word` (medium white), `hook` (giant thin white),
+`white-heavy`, `pop-purple`, `pop-cyan`, `pop-silver` (heavy gradient), `neon-yellow` (glow),
+`serif` (cinematic subtitle). Text can be edited freely; the timings come from words.json.
 
-Overlay types (all times in seconds):
-| type | fields | use for |
+| overlay | fields | use for |
 |---|---|---|
-| `counter` | start, end, from, to, suffix, lead, y, count_for | any number claim - counts up |
-| `cards` | start, end, images[], w, h, stagger, spots[[x,y,rot]] | listings, posts, before/after - pop in around the speaker and drift |
-| `pills` | start, end, y, items[{text, at, x, y}] | lists ("pricing / presentation") - one per item as spoken |
-| `call` | start, end, y, name, sub | "clients call/reach out" |
-| `broll` | start, end, src (img/video), media_start | full-screen cutaway: proof, property, screenshot |
-| `streak` | start, end, y | neon light swoosh behind a "deliver/results" line |
-| `punch` | at, scale, dur | zoom-blur whip into a new section |
-| `flash` | at, strength | white flash on a big beat or cut |
+| `title` | start, end, lines[text or {text, at, px}], y, behind, margin, max_px | cinematic titles: place names, key words; auto-fitted to width |
+| `grid` | start, end, items[{src, label}], top, bottom, stagger | collage of past videos/work |
+| `counter` | start, end, from, to, suffix, lead, y, count_for | number claims - counts up |
+| `cards` | start, end, images[], w, h, stagger, spots[[x,y,rot]] | listings/posts popping in around the speaker |
+| `pills` | start, end, y, items[{text, at, x, y}] | spoken lists |
+| `call` | start, end, y, name, sub | "clients call me" |
+| `broll` | start, end, src (img/video), media_start | stills/screenshots as cutaways (video b-roll goes in the EDL instead, which is sharper) |
+| `streak` | start, end, y | neon swoosh behind a results line |
+| `punch` | at, scale, dur | zoom-blur whip into a section |
+| `flash` | at, strength | white flash on a big beat |
 
-Image/video paths in overlays are relative to plan.json (or absolute); they're copied into the project.
+Paths in overlays are relative to plan.json's folder, or absolute.
 
 ## Rules of thumb
-- Target 30-45s; if the raw talk runs long, cut whole sentences, never speed up the voice.
-- Never leave a caption on screen during a pause > 0.6s; never stack more than 2 caption lines + 1 overlay.
-- One hero word per sentence; colours rotate purple -> cyan -> yellow so neighbours never match.
-- Keep the bottom 18% and right 12% clear of anything important (Instagram UI covers it).
-- Selfie footage often has the face high in frame: lower `focus_y` (0.2-0.3) rather than cropping heads.
-- If footage is HDR (iPhone HLG) `base` tone-maps it; if colours still look flat, try `grade: clean` and compare.
-- Text behind the subject (as in the reference's "So,") needs a person matte - not built in; skip it
-  unless the user asks, then use a segmentation model (e.g. `pip install rembg`) to cut a foreground layer.
+- Target 30-60s (FB max 90s). Cut whole sentences rather than speeding up the voice.
+- Never leave a caption up through a pause longer than 0.6s. Never stack more than 2 caption lines plus 1 overlay.
+- Kinetic: one hero word per sentence, rotating purple -> cyan -> yellow.
+  Cinematic: 1 title per location plus at most 2 word titles per reel, so they stay special.
+- Keep the bottom 18% and the right 12% free of key content, because the app UI covers them.
+- Selfie footage with the face high in frame: lower `focus_y` (0.2-0.3) instead of cutting off the head.
